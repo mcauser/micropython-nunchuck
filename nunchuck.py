@@ -1,4 +1,3 @@
-import machine
 import time
 
 class Nunchuck(object):
@@ -39,6 +38,7 @@ class Nunchuck(object):
         """Requests a sensor readout from the controller and receives the
         six data bits afterwards."""
         self.i2c.writeto(self.address, b'\x00')
+        time.sleep_us(10)
         self.i2c.readfrom_into(self.address, self.buffer)
 
     def __poll(self):
